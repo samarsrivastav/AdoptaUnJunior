@@ -4,6 +4,7 @@ import { AuthorsService } from './authors.service';
 
 describe('AuthorsController', () => {
   let controller: AuthorsController;
+  let service: AuthorsService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
