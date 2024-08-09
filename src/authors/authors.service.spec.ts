@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthorsService } from './authors.service';
 
-class MockAuthorRepo {}
+class MockAuthorRepository {}
 
 describe('AuthorsService', () => {
   let service: AuthorsService;
@@ -9,7 +9,7 @@ describe('AuthorsService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [AuthorsService,
-        { provide: 'AuthorRepo', useClass: MockAuthorRepo }
+        { provide: 'AuthorRepository', useClass: MockAuthorRepository }
       ],
     }).compile();
 

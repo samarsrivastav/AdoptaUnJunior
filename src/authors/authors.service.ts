@@ -2,7 +2,7 @@ import { ConflictException, Injectable, InternalServerErrorException, NotFoundEx
 import { CreateAuthorDto } from './dto/create-author.dto';
 import { UpdateAuthorDto } from './dto/update-author.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DeleteResult, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Author } from './entities/author.entity';
 
 @Injectable()
@@ -30,7 +30,7 @@ export class AuthorsService {
     }
   }
 
-  async findAll() {
+  async findAll(): Promise<Author[]> {
     try {
       const authors = await this.authorsRepo.find();
       return authors.length ? authors : [];
@@ -39,10 +39,7 @@ export class AuthorsService {
     }
   }
 
-  async findOne(id: number) {
-    if(!id) {
-      throw new NotFoundException(`Invalid id: ${id}`);
-    }
+  async findOne(id: number): Promise<Author> {
     try {
       const author = await this.authorsRepo.findOneByOrFail({ id });
       return author;
@@ -54,29 +51,23 @@ export class AuthorsService {
     }
   }
 
-  async update(id: number, updateAuthorDto: UpdateAuthorDto) {
-    if(!id) {
-      throw new NotFoundException(`Invalid id: ${id}`);
-    }
+  async update(id: number, updateAuthorDto: UpdateAuthorDto): Promise<void> {
     try {
-      const isAuthorFound = await this.authorsRepo.existsBy({ id });
-
-      if(isAuthorFound) {
-        await this.authorsRepo.update({ id }, updateAuthorDto);
-      } else {
-        throw new NotFoundException('Author not found');
-      }
+      const author = await this.authorsRepo.findOneByOrFail({ id });
+      const toSaveAuthor = this.authorsRepo.create(
+        { ...author, ...updateAuthorDto }
+      );
+      await this.authorsRepo.save(toSaveAuthor);
 
     } catch (error) {
-      console.log(error.name)
+      if(error.name === 'EntityNotFoundError') {
+        throw new NotFoundException('Author not found');
+      }
       throw new InternalServerErrorException('An error occurred while updating the author');
     }
   }
 
-  async remove(id: number) {
-    if(!id) {
-      throw new NotFoundException(`Invalid id: ${id}`);
-    }
+  async remove(id: number): Promise<void> {
     try {
       const isAuthorFound = await this.authorsRepo.existsBy({ id });
       if(isAuthorFound)  {
