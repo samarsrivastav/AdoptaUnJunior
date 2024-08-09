@@ -12,9 +12,15 @@ import { Author } from './authors/entities/author.entity';
 import { Genre } from './genres/entities/genre.entity';
 import { Publisher } from './publishers/entities/publisher.entity';
 import { Category } from './categories/entities/category.entity';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [ 
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+      exclude: ['/api/(.*)'],
+    }),
     TypeOrmModule.forRoot({
     type: 'sqlite',
     database: 'database.sqlite',

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Equipo AuJ!</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f06, #4a90e2);
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 50vw;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.4;
+            margin: 10px 0;
+            text-wrap: balance;
+            animation: fadeIn 2s ease-in-out 0.5s backwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Hola, Equipo de Adopta Un Junior!</h1>
+        <p>
+            Me encantaría formar parte de su equipo porque soy un apasionado de la programación. 
+            Tengo experiencia en diversas tecnologías y estoy en constante aprendizaje para mejorar 
+            mis habilidades. Estoy seguro de que puedo aportar valor y aprender mucho más trabajando en equipo.
+        </p>
+        <p>
+          He trabajado como programador de videojuegos, utilizando <strong>Unreal Engine y Unity</strong>. 
+          Ahora busco migrar al <strong>sector web</strong>, atraído por su versatilidad y crecimiento, y 
+          me he matriculado en un <strong>Máster Universitario en Desarrollo de Aplicaciones y Servicios Web</strong>. 
+        </p>
+        <p>
+            Mis conocimientos incluyen <strong>C++, C#, JavaScript/TypeScript, AngularJS, NestJS, Jest, SQL, MongoDB y PostgreSQL</strong>, 
+          pero, además, tengo especial interés en profundizar en el <strong> <i>stack</i> completo de .Net</strong>.
+        </p>
+    </div>
+</body>
+</html>
