@@ -2,19 +2,25 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { BooksController } from './books.controller';
 import { BooksService } from './books.service';
 
+class MockBookRepository {}
+
 describe('BooksController', () => {
-  let controller: BooksController;
+  let bookController: BooksController;
+  let bookService: BooksService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [BooksController],
-      providers: [BooksService],
+      providers: [BooksService,
+        { provide: 'BookRepository', useClass: MockBookRepository }
+      ],
     }).compile();
 
-    controller = module.get<BooksController>(BooksController);
+    bookController = module.get<BooksController>(BooksController);
+    bookService = module.get<BooksService>(BooksService);
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(bookController).toBeDefined();
   });
 });
