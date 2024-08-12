@@ -23,13 +23,13 @@ export class AuthorsController {
   }
 
   @Patch(':id')
-  @HttpCode(205)
+  @HttpCode(204)
   async update(@Param('id') id: string, @Body() updateAuthorDto: UpdateAuthorDto) {
     return await this.authorsService.update(+id, updateAuthorDto);
   }
 
   @Delete(':id')
-  @HttpCode(205)
+  @HttpCode(204)
   async remove(@Param('id') id: string) {
     return await this.authorsService.remove(+id);
   }
