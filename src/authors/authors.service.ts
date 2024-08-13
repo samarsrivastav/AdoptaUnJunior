@@ -4,6 +4,7 @@ import { UpdateAuthorDto } from './dto/update-author.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Author } from './entities/author.entity';
+import { Book } from '../books/entities/book.entity';
 
 @Injectable()
 export class AuthorsService {
@@ -77,6 +78,19 @@ export class AuthorsService {
       }
     } catch (error) {
       throw new InternalServerErrorException('An error occurred while deleting the author');
+    }
+  }
+
+  async findBooksByAuthorId(id: number): Promise<Book[]> {
+    try {
+      const author = await this.authorsRepo.findOneOrFail({ 
+          where: {id}, 
+          relations: ['books'] 
+        });
+
+      return author.books;
+    } catch (error) {
+      throw new InternalServerErrorException('An error occurred while fetching author books');
     }
   }
 }

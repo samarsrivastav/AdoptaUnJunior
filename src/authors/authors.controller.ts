@@ -22,6 +22,11 @@ export class AuthorsController {
     return await this.authorsService.findOne(+id);
   }
 
+  @Get('/:id/books')
+  async findBooksByAuthorId(@Param('id') id: number) {
+    return await this.authorsService.findBooksByAuthorId(+id);
+  }
+
   @Patch(':id')
   @HttpCode(204)
   async update(@Param('id') id: string, @Body() updateAuthorDto: UpdateAuthorDto) {

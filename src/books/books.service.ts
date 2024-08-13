@@ -31,7 +31,7 @@ export class BooksService {
 
   async findAll(): Promise<Book[]> {
     try {
-      const books = await this.booksRepo.find({relations: ['authors', 'categories', 'publisher']});
+      const books = await this.booksRepo.find({relations: ['authors', 'categories']});
       return books.length ? books : [];
     } catch (error) {
       throw new NotFoundException('Books not found');
