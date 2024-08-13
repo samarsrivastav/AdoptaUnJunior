@@ -41,14 +41,14 @@ $ npm run test:cov
 
 ## Endpoints
 - [localhost:3000/](localhost:3000/) --> "cv" page
-  - [/books](localhost:3000/books/) 
-  - [/books/:id](localhost:3000/books/1)
-  - [/authors](localhost:3000/authors) 
-  - [/authors/:id](localhost:3000/authors/1)
-  - [/categories](localhost:3000/categories) 
-  - [/categories/:id](localhost:3000/categories/1)
-  - [/publishers](localhost:3000/publishers)
-  - [/publishers/:id](localhost:3000/publishers/1)
+  - [api/books](localhost:3000/books/) 
+  - [api/books/:id](localhost:3000/books/1)
+  - [api/authors](localhost:3000/authors) 
+  - [api/authors/:id](localhost:3000/authors/1)
+  - [api/categories](localhost:3000/categories) 
+  - [api/categories/:id](localhost:3000/categories/1)
+  - [api/publishers](localhost:3000/publishers)
+  - [api/publishers/:id](localhost:3000/publishers/1)
 
 ## License
 
