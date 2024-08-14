@@ -1,26 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { CreateGenreDto } from './dto/create-genre.dto';
 import { UpdateGenreDto } from './dto/update-genre.dto';
+import { Genre } from './entities/genre.entity';
 
 @Injectable()
 export class GenresService {
-  create(createGenreDto: CreateGenreDto) {
-    return 'This action adds a new genre';
+  async create(createGenreDto: CreateGenreDto): Promise<Genre> {
+    return null;
   }
 
-  findAll() {
-    return `This action returns all genres`;
+  async findAll(): Promise<Genre[]> {
+    return null;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} genre`;
+  async findOne(id: number): Promise<Genre> {
+    return null;
   }
 
-  update(id: number, updateGenreDto: UpdateGenreDto) {
-    return `This action updates a #${id} genre`;
+  async update(id: number, updateGenreDto: UpdateGenreDto): Promise<void> {
+    return null;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} genre`;
+  async remove(id: number): Promise<void> {
+    return null;
   }
 }
